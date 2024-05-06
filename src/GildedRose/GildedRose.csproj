@@ -6,6 +6,12 @@
     <StartupObject>GildedRoseKata.Program</StartupObject>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+    <AnalysisMode>Reccomended</AnalysisMode>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
   </ItemGroup>

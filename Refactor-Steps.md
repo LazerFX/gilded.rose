@@ -44,3 +44,7 @@ Added Dependency Injection and a basic host environment with no additional injec
 ---
 
 Added the DI for an `IWriter` class that is implemented in a ProductionWriter output.  To confirm, this has correctly been iterating each step to show proper output using the `.\test.ps1` command.
+
+---
+
+Added "Warnings As Errors" to promote clean code style and good quality output
