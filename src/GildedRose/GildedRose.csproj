@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
     <AnalysisMode>Reccomended</AnalysisMode>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

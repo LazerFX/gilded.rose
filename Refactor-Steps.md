@@ -48,3 +48,7 @@ Added the DI for an `IWriter` class that is implemented in a ProductionWriter ou
 ---
 
 Added "Warnings As Errors" to promote clean code style and good quality output
+
+---
+
+Enabled Nullable environment to pass warnings-as-errors and also increase code quality.
