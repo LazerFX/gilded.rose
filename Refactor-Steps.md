@@ -10,9 +10,27 @@ Given the raw kata, the first step is to make the application testable.  In orde
 
 Proposed steps to do this:
 
-1. Write a simple powershell script to build, run the application and then compare output of the application with the `ApprovalTest.ThirtyDays.verified.txt` text file. (The current application output).  Run this after each step below to ensure that there is no failure, until we can automate this process.
+1. Write a simple PowerShell script to build, run the application and then compare output of the application with the `ApprovalTest.ThirtyDays.verified.txt` text file. (The current application output).  Run this after each step below to ensure that there is no failure, until we can automate this process.
 1. Take the current `Main` function and drop it into a class we can inject.  Update Main with a nice DI process, and inject the old `Main` function into the new DI environment.
 1. Create a DI wrapper for `Console.WriteLine`, and use that in the new `Main` function.
 1. Using the new DI wrapper, update the Tests so that they create a DI container, inject a StringBuilder wrapped class and can get the text output.  This can then be compared against the `ApprovalTest.ThirtyDays.verified.txt` output file.
 
 ### In progress - each time we commit, we'll make a note here what has changed
+
+Temporary testing process - `cd` into `src`, and then run `.\test.ps1`
+
+Output will be either:
+
+    No differences.
+    Press any key to continue
+
+or
+
+    InputObject       SideIndicator
+    -----------       -------------
+    OMGHAI!           =>
+    OMGHAI!  Wazaaap? <=
+
+Which is what would happen if you appended `Wazaaap?` to the original output of the application.
+
+---
