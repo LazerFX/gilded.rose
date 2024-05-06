@@ -34,3 +34,7 @@ or
 Which is what would happen if you appended `Wazaaap?` to the original output of the application.
 
 ---
+
+Created a `RoseRunner` class.
+
+---
