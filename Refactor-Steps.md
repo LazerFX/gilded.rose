@@ -64,3 +64,13 @@ Basic host builder created for tests, and an injected `TestWriter` `IWriter` imp
 ### Post-code change commentary
 
 I noted, part way through, that it may be unclear why I'm changing an already existing and working piece of code.  First, I mis-read the code in the `ThirtyDays` test, not fully realising that it was running completely.  Second, I have a personal preference that, in a well designed system, there are no references to pure-static singleton objects (`Console.WriteLine` or `DateTime.Now` for instance) without having them testable and understandable.  Therefore, I did not wish to implement the code with `Console.WriteLine` in-situ, and modifying the output was (in my mind) a clear benefit.  I confess, seeing `fakeoutput` in the `ThirtyDays` `Fact` made me assume that it was a faked test - mea culpa.
+
+## 2 - Look at adding tests to the codebase, and refactoring
+
+So we now have a global test suite, a DI container, and an infrastructure we can hopefully rely on to make the code more reliable and testable.  So what is the code doing?  Well, it's got a bunch of nested IF/Else statements, which are (as always) going to be hard to pick apart.  It's doing it in a massive loop.  It's got a *lot* of magic numbers.  It's got text values for item names scattered throughout.  It's not clear which part goes with which area, and what conditions cause each part of the code to run.
+
+I think the first step will be to add some explicit tests for the conditions in the Kata text, and go on from there; probably removing the magic numbers as we go.
+
+### In progress - each time we commit, we'll make a note here what as changed
+
+Generic `stuff` object test added.
