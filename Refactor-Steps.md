@@ -28,8 +28,8 @@ or
 
     InputObject       SideIndicator
     -----------       -------------
-    OMGHAI!           =>
-    OMGHAI!  Wazaaap? <=
+    OMGHAI!           =‌>
+    OMGHAI!  Wazaaap? <‌=
 
 Which is what would happen if you appended `Wazaaap?` to the original output of the application.
 
@@ -38,3 +38,5 @@ Which is what would happen if you appended `Wazaaap?` to the original output of 
 Created a `RoseRunner` class.
 
 ---
+
+Added Dependency Injection and a basic host environment with no additional injection.
