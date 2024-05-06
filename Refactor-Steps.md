@@ -52,3 +52,13 @@ Added "Warnings As Errors" to promote clean code style and good quality output
 ---
 
 Enabled Nullable environment to pass warnings-as-errors and also increase code quality.
+
+--
+
+Added nullable annotation to Item class (Come at me, Goblin!)
+
+--
+
+### Post-code change commentary
+
+I noted, part way through, that it may be unclear why I'm changing an already existing and working piece of code.  First, I mis-read the code in the `ThirtyDays` test, not fully realising that it was running completely.  Second, I have a personal preference that, in a well designed system, there are no references to pure-static singleton objects (`Console.WriteLine` or `DateTime.Now` for instance) without having them testable and understandable.  Therefore, I did not wish to implement the code with `Console.WriteLine` in-situ, and modifying the output was (in my mind) a clear benefit.  I confess, seeing `fakeoutput` in the `ThirtyDays` `Fact` made me assume that it was a faked test - mea culpa.
