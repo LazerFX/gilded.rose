@@ -43,7 +43,7 @@ Added Dependency Injection and a basic host environment with no additional injec
 
 ---
 
-Added the DI for an `IWriter` class that is implemented in a ProductionWriter output.  To confirm, this has correctly been iterating each step to show proper output using the `.\test.ps1` command.
+Added the DI for an `IWriter` class that is implemented in a `ProductionWriter` output.  To confirm, this has correctly been iterating each step to show proper output using the `.\test.ps1` command.
 
 ---
 
@@ -58,6 +58,8 @@ Enabled Nullable environment to pass warnings-as-errors and also increase code q
 Added nullable annotation to Item class (Come at me, Goblin!)
 
 --
+
+Basic host builder created for tests, and an injected `TestWriter` `IWriter` implementation (As opposed to the `ProductionWriter` used in the live code).  At some point, I'll change it to include a nicer, chainable host build process but for now it works.  I don't like duplicated code like this between test and live for building the environment, as that makes the actual build environment an untested point in the code, so this is on a to-do to correct later.
 
 ### Post-code change commentary
 
