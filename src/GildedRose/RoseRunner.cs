@@ -1,11 +1,13 @@
-using System;
 using System.Collections.Generic;
 
 namespace GildedRoseKata
 {
-    public class RoseRunner {
+    public class RoseRunner(IWriter writer)
+    {
+        private readonly IWriter _writer = writer;
+
         public void Run(string[] args) {
-            Console.WriteLine("OMGHAI!");
+            _writer.WriteLine("OMGHAI!");
 
             IList<Item> Items = new List<Item>{
                 new Item {Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20},
@@ -39,13 +41,13 @@ namespace GildedRoseKata
 
             for (var i = 0; i < 31; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
+                _writer.WriteLine("-------- day " + i + " --------");
+                _writer.WriteLine("name, sellIn, quality");
                 for (var j = 0; j < Items.Count; j++)
                 {
-                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    _writer.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
                 }
-                Console.WriteLine("");
+                _writer.WriteLine("");
                 app.UpdateQuality();
             }
         }

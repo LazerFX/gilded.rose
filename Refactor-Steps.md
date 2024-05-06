@@ -40,3 +40,7 @@ Created a `RoseRunner` class.
 ---
 
 Added Dependency Injection and a basic host environment with no additional injection.
+
+---
+
+Added the DI for an `IWriter` class that is implemented in a ProductionWriter output.  To confirm, this has correctly been iterating each step to show proper output using the `.\test.ps1` command.

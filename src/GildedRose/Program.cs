@@ -11,6 +11,7 @@ namespace GildedRoseKata
                 .ConfigureServices(services => 
                 {
                     services.AddTransient<RoseRunner>();
+                    services.AddSingleton<IWriter, ProductionWriter>();
                 }).Build();
 
             host.Services.GetRequiredService<RoseRunner>().Run(args);
