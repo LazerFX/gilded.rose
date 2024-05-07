@@ -192,3 +192,7 @@ Fixed `MaxQuality` naïve approach, however this has demonstrated there are more
 Added more tests to identify issues with the clamping.  Fixed the issues while doing it.  Have a couple of clamping issues left and a bug in the verified text, which I've fixed in the codebase by clamping, and will update in the verified.
 
 ---
+
+Fixed a faulty test
+
+---
