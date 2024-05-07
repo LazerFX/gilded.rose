@@ -188,3 +188,7 @@ Fixed SellIn location bug
 Fixed `MaxQuality` naïve approach, however this has demonstrated there are more tests needed for where we're adding more than 1 (for instance in the backstage pass) and it's going past Max Value.  That's next.
 
 ---
+
+Added more tests to identify issues with the clamping.  Fixed the issues while doing it.  Have a couple of clamping issues left and a bug in the verified text, which I've fixed in the codebase by clamping, and will update in the verified.
+
+---
