@@ -96,3 +96,7 @@ Now we can start removing the string magic values and updating them through the 
 Adding a `MaxQuality` value to our `KeyItems` class, we can see the name perhaps wasn't right - for now, we'll call it `KeyValues`.  Most modern IDE's allow you to F2 and rename a class, and auto-update throughout, which simplifies this sort of refactor.  Then, we'll update `MaxQuality` through the code.  The important thing to note is that we also update this in the tests - if we want to change the value of `MaxQuality` in the future, we can do so without changing any other values.  If we want to make sure nobody accidentally breaks the tests then we can explicitly call-out a test that has a `MaxQuality == 50` as a guard-test, though some would frown upon this.
 
 ---
+
+Now we can start looking at simplifying some of the logic.  One of the easiest things you can do is invert an `if` statement.  An example is the `SellIn < 0` clause, where the `AgedBrie` value is wrapping everything else.  If we invert the if statement, we can put that clause into its own area, and reduce the nesting of the rest of the code.
+
+---
