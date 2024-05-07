@@ -28,7 +28,7 @@ namespace GildedRoseTests
         [InlineData(KeyItem.Sulfuras, 20, 20, 20, 20)]
         [InlineData(KeyItem.Sulfuras, 0, 20, 0, 20)]
         [InlineData(KeyItem.Sulfuras, -1, 80, -1, 80)]
-        public void foo(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
+        public void GivenNameSellInAndQuality_TheGildedRose_ShouldCalculateTheRightSellInAndQuality(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
             GildedRose app = new GildedRose(Items);
