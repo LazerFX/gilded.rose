@@ -166,3 +166,10 @@ Split out `Standard` flow and `Special` flow within the function, to prove it wo
 As we've done this, we've identified a non-apparent magic value - if the `SellIn` value is negative, it takes 2 off the quality, otherwise it takes 1 off.  This reduction should be clearly identified, like we did with the BackstagePass values.  We're only going to do this for the standard pass at the moment, as we need to refactor the other passes properly.
 
 ---
+
+Now we can separate the functions.  There's a few ways of doing this, but given the architecture of this (And the fact we can't amend the `Item` object) we're just going to pass an item around.  I'd rather have an Item type that we can tell what to do, but that's outside the scope of this functionality.  At some point, I would like to have an injected calculator object that can handle this, but that's quite an advanced refactor, and quite frankly, YAGNI.
+
+At this point, I ran the tests manually from the command line, to confirm that everything was working.  Unfortunately, I found that things were not working; the IDE tests were happily reporting success, however running `dotnet test` was failing.  Sadly, this sort of issue is not uncommon in coding, so always double-check your results; it's a shame it took a while to figure this out.  I'm going to commit this, and go back a few commits to find out where things started failing.  Assume this is a red test.
+
+---
+

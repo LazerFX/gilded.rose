@@ -41,68 +41,79 @@ namespace GildedRoseKata
             {
                 if (KeyValues.KeyItems.Contains(item.Name))
                 {
-                    if (item.Name == KeyValues.Sulfuras)
-                    {
-                        break;
-                    }
-
-                    if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
-                    {
-                        item.Quality--;
-                    }
-
-                    if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality++;
-                    }
-
-                    if (item.Name == KeyValues.BackstagePass.Name)
-                    {
-                        if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary)
-                        {
-                            item.Quality++;
-                        }
-                        else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
-                                item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary)
-                        {
-                            item.Quality += KeyValues.BackstagePass.FirstIncrease;
-                        }
-                        else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary)
-                        {
-                            item.Quality += KeyValues.BackstagePass.SecondIncrease;
-                        }
-                    }
-
-                    if (item.SellIn < 0)
-                    {
-                        if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
-                        {
-                            item.Quality++;
-                        }
-
-                        if (item.Name == KeyValues.BackstagePass.Name)
-                        {
-                            item.Quality = KeyValues.BackstagePass.OverageValue;
-                        }
-
-                        if (item.Quality > 0)
-                        {
-                            item.Quality--;
-                        }
-                    }
-                    else
-                    {
-                        item.SellIn--;
-
-                        if (item.SellIn < 0 && item.Quality > 0) {
-                            item.Quality -= KeyValues.AgedQualityReduction;
-                        }
-                        else {
-                            item.Quality -= KeyValues.QualityReduction;
-                        }
-                    }
-
+                    HandleKey(item);
                 }
+                else
+                {
+                    HandleStandard(item);
+                }
+            }
+        }
+
+        private static void HandleKey(Item item)
+        {
+            if (item.Name == KeyValues.Sulfuras)
+            {
+                return;
+            }
+
+            if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
+            {
+                item.Quality--;
+            }
+
+            if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality++;
+            }
+
+            if (item.Name == KeyValues.BackstagePass.Name)
+            {
+                if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary)
+                {
+                    item.Quality++;
+                }
+                else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
+                        item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary)
+                {
+                    item.Quality += KeyValues.BackstagePass.FirstIncrease;
+                }
+                else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary)
+                {
+                    item.Quality += KeyValues.BackstagePass.SecondIncrease;
+                }
+            }
+
+            if (item.SellIn < 0)
+            {
+                if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
+                {
+                    item.Quality++;
+                }
+
+                if (item.Name == KeyValues.BackstagePass.Name)
+                {
+                    item.Quality = KeyValues.BackstagePass.OverageValue;
+                }
+
+                if (item.Quality > 0)
+                {
+                    item.Quality--;
+                }
+            }
+        }
+
+        private static void HandleStandard(Item item)
+        {
+            item.SellIn--;
+
+            if (item.SellIn < 0 && item.Quality > 0)
+            {
+                item.Quality -= KeyValues.AgedQualityReduction;
+            }
+            else
+            {
+                item.Quality -= KeyValues.QualityReduction;
             }
         }
     }
