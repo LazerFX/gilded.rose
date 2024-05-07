@@ -22,65 +22,65 @@ namespace GildedRoseKata
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
-                if (Items[i].Name != KeyValues.AgedBrie && Items[i].Name != KeyValues.BackstagePass)
+                if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass)
                 {
-                    if (Items[i].Quality > 0)
+                    if (item.Quality > 0)
                     {
-                        if (Items[i].Name != KeyValues.Sulfuras)
+                        if (item.Name != KeyValues.Sulfuras)
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            item.Quality = item.Quality - 1;
                         }
                     }
                 }
                 else
                 {
-                    if (Items[i].Quality < KeyValues.MaxQuality)
+                    if (item.Quality < KeyValues.MaxQuality)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        item.Quality = item.Quality + 1;
 
-                        if (Items[i].Name == KeyValues.BackstagePass)
+                        if (item.Name == KeyValues.BackstagePass)
                         {
-                            if (Items[i].SellIn < 11)
+                            if (item.SellIn < 11)
                             {
-                                if (Items[i].Quality < KeyValues.MaxQuality)
+                                if (item.Quality < KeyValues.MaxQuality)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    item.Quality = item.Quality + 1;
                                 }
                             }
 
-                            if (Items[i].SellIn < 6)
+                            if (item.SellIn < 6)
                             {
-                                if (Items[i].Quality < KeyValues.MaxQuality)
+                                if (item.Quality < KeyValues.MaxQuality)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    item.Quality = item.Quality + 1;
                                 }
                             }
                         }
                     }
                 }
 
-                if (Items[i].Name != KeyValues.Sulfuras)
+                if (item.Name != KeyValues.Sulfuras)
                 {
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    item.SellIn = item.SellIn - 1;
                 }
 
-                if (Items[i].SellIn < 0)
+                if (item.SellIn < 0)
                 {
-                    if (Items[i].Name == KeyValues.AgedBrie && Items[i].Quality < KeyValues.MaxQuality)
+                    if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        item.Quality = item.Quality + 1;
                     }
 
-                    if (Items[i].Name == KeyValues.BackstagePass)
+                    if (item.Name == KeyValues.BackstagePass)
                     {
-                        Items[i].Quality = KeyValues.BackstagePassOverageValue;
+                        item.Quality = KeyValues.BackstagePassOverageValue;
                     }
 
-                    if (Items[i].Quality > 0 && Items[i].Name != KeyValues.Sulfuras)
+                    if (item.Quality > 0 && item.Name != KeyValues.Sulfuras)
                     {
-                        Items[i].Quality = Items[i].Quality - 1;
+                        item.Quality = item.Quality - 1;
                     }
 
                 }

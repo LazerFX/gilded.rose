@@ -116,3 +116,7 @@ While doing this, we can clarify the code for BackstagePass - and item subtracte
 And now we have an extra nested `Sulfuras` if value which can be combined.
 
 ---
+
+Now that we're progressing, I'm finding the `Items[i].<value>` construct to be quite annoying.  I'm going to replace the `for` loop with a `foreach` loop, and just operate on an `item` individually.
+
+---
