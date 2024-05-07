@@ -122,6 +122,8 @@ namespace GildedRoseKata
             {
                 item.Quality = int.Max(item.Quality - KeyValues.QualityReduction, 0);
             }
+
+            item.Quality = int.Max(item.Quality, 0);
         }
     }
 }
