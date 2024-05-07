@@ -34,7 +34,8 @@ namespace GildedRoseKata
                         }
                     }
                 }
-                else
+
+                if (item.Name == KeyValues.AgedBrie || item.Name == KeyValues.BackstagePass)
                 {
                     if (item.Quality < KeyValues.MaxQuality)
                     {
