@@ -4,8 +4,6 @@ This document will cover what refactoring steps have been taken to the Gilded Ro
 
 ## 1 - Make the application testable
 
-### Before
-
 Given the raw kata, the first step is to make the application testable.  In order to do this, I intend to add a simple DI container, using the default built-in .NET host process container.  I will put a wrapper around the System.Console.WriteLine function to make it DI-able, and will inject this into the codebase.  I will then capture the output, compare it to the filesystem and ensure that this output matches.
 
 Proposed steps to do this:
@@ -15,7 +13,7 @@ Proposed steps to do this:
 1. Create a DI wrapper for `Console.WriteLine`, and use that in the new `Main` function.
 1. Using the new DI wrapper, update the Tests so that they create a DI container, inject a StringBuilder wrapped class and can get the text output.  This can then be compared against the `ApprovalTest.ThirtyDays.verified.txt` output file.
 
-### In progress - each time we commit, we'll make a note here what has changed
+### 1 - In progress - each time we commit, we'll make a note here what has changed
 
 Temporary testing process - `cd` into `src`, and then run `.\test.ps1`
 
@@ -61,7 +59,7 @@ Added nullable annotation to Item class (Come at me, Goblin!)
 
 Basic host builder created for tests, and an injected `TestWriter` `IWriter` implementation (As opposed to the `ProductionWriter` used in the live code).  At some point, I'll change it to include a nicer, chainable host build process but for now it works.  I don't like duplicated code like this between test and live for building the environment, as that makes the actual build environment an untested point in the code, so this is on a to-do to correct later.
 
-### Post-code change commentary
+### 1 - Post-code change commentary
 
 I noted, part way through, that it may be unclear why I'm changing an already existing and working piece of code.  First, I mis-read the code in the `ThirtyDays` test, not fully realising that it was running completely.  Second, I have a personal preference that, in a well designed system, there are no references to pure-static singleton objects (`Console.WriteLine` or `DateTime.Now` for instance) without having them testable and understandable.  Therefore, I did not wish to implement the code with `Console.WriteLine` in-situ, and modifying the output was (in my mind) a clear benefit.  I confess, seeing `fakeoutput` in the `ThirtyDays` `Fact` made me assume that it was a faked test - mea culpa.
 
@@ -71,7 +69,7 @@ So we now have a global test suite, a DI container, and an infrastructure we can
 
 I think the first step will be to add some explicit tests for the conditions in the Kata text, and go on from there; probably removing the magic numbers as we go.
 
-### In progress - each time we commit, we'll make a note here what as changed
+### 2 - In progress - each time we commit, we'll make a note here what has changed
 
 Generic `stuff` object test added.
 
@@ -147,4 +145,16 @@ We can cut out any reference to `Sulfuras` by simply returning early.  Many woul
 
 Now we have several nested `if` statements that do nothing, we can coalesce them.
 
----
+### 2 - Post code change commentary
+
+We've greatly simplified the codebase.  It's now relatively easy to separate the flow into what each item does, and while we could continue going (separating out items into individual flows, for instance), it's worthwhile taking a step back and looking at the big picture before we do too much more.  So let's do that now.
+
+## 3 - Consider how to update the application for future needs
+
+Now we're at the point where we can see the wood from the trees.  This gives us a decision - how do we proceed from here?  We've got a goal - if an item is 'conjured', it should reduce Quality at an x2 rate compared to a non-Conjured item.  So we need a unified quality handling, so that can be added in.  It's not clear from the requirements whether we should assume anything with `Conjured` at the start is a Conjured special instance of that item - i.e. how could a `Conjured Aged Brie` work in that instance, or a `Conjured Sulfuras`?  I'm going to go from the basis that an item that starts with `Conjured` is going to operate as if it is a Standard Item - i.e. a non-named special - and reduces at double-rate.  This says to me that, if we have an item that is in the 'special' list, it goes off to a special function that handles those.  Otherwise, it goes to a standard function.  This then allows us to separate the code into sub-functions, and we can create one for each category, simplifying a lot of the if statements.  So that's the next 'goal' of this process.
+
+1. Separate the code into `Standard` and `Special` flows.
+1. Keep those clear and minimal
+1. Add a `Conjured` flow to the `Special` flows.
+
+### 3 - In progress - each time we commit, we'll make a note here what has changed
