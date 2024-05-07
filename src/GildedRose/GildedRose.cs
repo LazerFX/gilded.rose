@@ -2,8 +2,16 @@
 
 namespace GildedRoseKata
 {
+    public static class KeyItem
+    {
+        public const string AgedBrie = "Aged Brie";
+        public const string BackstagePass = "Backstage passes to a TAFKAL80ETC concert";
+        public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+    }
+
     public class GildedRose
     {
+
         IList<Item> Items;
         public GildedRose(IList<Item> Items)
         {

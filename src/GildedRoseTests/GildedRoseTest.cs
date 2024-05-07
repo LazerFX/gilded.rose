@@ -10,6 +10,9 @@ namespace GildedRoseTests
         [InlineData("stuff", 1, 10, 0, 9)]
         [InlineData("stuff", 2, 10, 1, 9)]
         [InlineData("stuff", 0, 10, -1, 8)]
+        [InlineData(KeyItem.AgedBrie, 5, 10, 4, 11)]
+        [InlineData(KeyItem.AgedBrie, 1, 10, 0, 11)]
+        [InlineData(KeyItem.AgedBrie, 0, 10, -1, 12)]
         public void foo(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
