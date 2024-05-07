@@ -83,8 +83,10 @@ Added a set of `constant` values for the item names, and included this in the te
 
 Added `BackstagePass` values, bracketing the times when we have no value increase, standard value increase and increased value increase, and then the sharp drop-off to zero on negative SellIn.
 
---
+---
 
 Added `Sulfuras` tests.  The values are basically constant, unchanging, based on input.
 
 ---
+
+Now we can start removing the string magic values and updating them through the code.
