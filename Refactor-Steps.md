@@ -158,3 +158,7 @@ Now we're at the point where we can see the wood from the trees.  This gives us 
 1. Add a `Conjured` flow to the `Special` flows.
 
 ### 3 - In progress - each time we commit, we'll make a note here what has changed
+
+Split out `Standard` flow and `Special` flow within the function, to prove it works.
+
+---

@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseKata
 {
     public static class KeyValues
     {
+        public static readonly string[] KeyItems = [AgedBrie, BackstagePass.Name, Sulfuras];
+
         public const string AgedBrie = "Aged Brie";
 
         public static class BackstagePass
@@ -33,42 +36,18 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                if (item.Name == KeyValues.Sulfuras)
+                if (KeyValues.KeyItems.Contains(item.Name))
                 {
-                    break;
-                }
-
-                if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
-                {
-                    item.Quality--;
-                }
-
-                if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
-                {
-                    item.Quality++;
-                }
-
-                if (item.Name == KeyValues.BackstagePass.Name)
-                {
-                    if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary)
+                    if (item.Name == KeyValues.Sulfuras)
                     {
-                        item.Quality++;
+                        break;
                     }
-                    else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
-                            item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary)
-                    {
-                        item.Quality += KeyValues.BackstagePass.FirstIncrease;
-                    }
-                    else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary)
-                    {
-                        item.Quality += KeyValues.BackstagePass.SecondIncrease;
-                    }
-                }
 
-                item.SellIn--;
+                    if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
+                    {
+                        item.Quality--;
+                    }
 
-                if (item.SellIn < 0)
-                {
                     if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
                     {
                         item.Quality++;
@@ -76,12 +55,46 @@ namespace GildedRoseKata
 
                     if (item.Name == KeyValues.BackstagePass.Name)
                     {
-                        item.Quality = KeyValues.BackstagePass.OverageValue;
+                        if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary)
+                        {
+                            item.Quality++;
+                        }
+                        else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
+                                item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary)
+                        {
+                            item.Quality += KeyValues.BackstagePass.FirstIncrease;
+                        }
+                        else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary)
+                        {
+                            item.Quality += KeyValues.BackstagePass.SecondIncrease;
+                        }
                     }
 
-                    if (item.Quality > 0)
+                    if (item.SellIn < 0)
                     {
+                        if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
+                        {
+                            item.Quality++;
+                        }
+
+                        if (item.Name == KeyValues.BackstagePass.Name)
+                        {
+                            item.Quality = KeyValues.BackstagePass.OverageValue;
+                        }
+
+                        if (item.Quality > 0)
+                        {
+                            item.Quality--;
+                        }
+                    }
+                    else
+                    {
+                        item.SellIn--;
                         item.Quality--;
+
+                        if (item.SellIn < 0 && item.Quality > 0) {
+                            item.Quality--;
+                        }
                     }
 
                 }
