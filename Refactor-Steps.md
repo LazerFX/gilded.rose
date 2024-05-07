@@ -80,3 +80,7 @@ Generic `stuff` object test added.
 Added a set of `constant` values for the item names, and included this in the test.  Did not change any code yet.  First one to do was Aged Brie, which noted an interesting thing - Aged Brie increases by 2 after it goes negative (Due to quality going up in two separate loops).  Given the instructions are not to change things, we will keep this as-is, however it's obvious that simply by doing this refactor we can see that there are possible rules that should be considered further.  If this was a business product, I'd be keeping a list of these items, and raising them with the product owners to confirm this is how they wanted it to work.
 
 ---
+
+Added `BackstagePass` values, bracketing the times when we have no value increase, standard value increase and increased value increase, and then the sharp drop-off to zero on negative SellIn.
+
+--
