@@ -204,3 +204,9 @@ Fixed the Aged Brie reduction
 Added boundary test for standard condition
 
 ---
+
+Now all tests are passing, we can start to figure out what to do next.  As above, we need to start separating things into per-named items functions.  The first step is to do the individual quality and sell-in function changes in a switch statement based on the name passed in.  This will obviously involve some 'duplicated' code, but that's OK - we're going to refactor once we've got things neat.  The idea is to target something that looks like `HandleStandard` for each item type.
+
+| **WARNING** | |
+|-------------|-|
+|❗| You must be careful when running tests, it appears as VSCode and Visual Studio will reliably run the tests once, and once only, so use `dotnet test` to ensure correct test functionality. |
