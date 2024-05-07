@@ -78,12 +78,9 @@ namespace GildedRoseKata
                         Items[i].Quality = KeyValues.BackstagePassOverageValue;
                     }
 
-                    if (Items[i].Quality > 0)
+                    if (Items[i].Quality > 0 && Items[i].Name != KeyValues.Sulfuras)
                     {
-                        if (Items[i].Name != KeyValues.Sulfuras)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
+                        Items[i].Quality = Items[i].Quality - 1;
                     }
 
                 }

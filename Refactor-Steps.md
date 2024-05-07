@@ -112,3 +112,7 @@ We can now continue this with the `BackstagePass` value.
 While doing this, we can clarify the code for BackstagePass - and item subtracted from itself is equal to Zero, so let's add a constant (`BackstagePassOverageValue`), and set it to this.  Don't forget to update the tests!
 
 ---
+
+And now we have an extra nested `Sulfuras` if value which can be combined.
+
+---
