@@ -136,3 +136,7 @@ Now we can see that we have two conditions - one for AgedBrie and one for Backst
 Now we can handle the magic values for the `BackstagePass` a bit better.  We're going to completely refactor this piece of code as it's really awful what it's doing right now - there's no clear way to set upper/lower bounds or more importantly to change how much is increased each step (for instance, if we want to increase by 4 when it's under 6, we'd have to work out how it functions in our head, and add another `item.Quality++` line.  Easy right now, while the code is in our head; hard later when we're trying to understand what is going on and how to handle this from scratch).
 
 ---
+
+That looks like it has made things worse - those names are horrific.  Let's create a nested class for the BackstagePass values, and doe some cleaning up of the names.  Clearing up a few of the names to be more meaningful, a little shorter, and logically combined should help with readability in the future.
+
+---
