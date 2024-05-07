@@ -162,3 +162,7 @@ Now we're at the point where we can see the wood from the trees.  This gives us 
 Split out `Standard` flow and `Special` flow within the function, to prove it works.
 
 ---
+
+As we've done this, we've identified a non-apparent magic value - if the `SellIn` value is negative, it takes 2 off the quality, otherwise it takes 1 off.  This reduction should be clearly identified, like we did with the BackstagePass values.  We're only going to do this for the standard pass at the moment, as we need to refactor the other passes properly.
+
+---

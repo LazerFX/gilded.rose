@@ -5,6 +5,9 @@ namespace GildedRoseKata
 {
     public static class KeyValues
     {
+        public const int QualityReduction = 1;
+        public const int AgedQualityReduction = 2;
+
         public static readonly string[] KeyItems = [AgedBrie, BackstagePass.Name, Sulfuras];
 
         public const string AgedBrie = "Aged Brie";
@@ -90,10 +93,12 @@ namespace GildedRoseKata
                     else
                     {
                         item.SellIn--;
-                        item.Quality--;
 
                         if (item.SellIn < 0 && item.Quality > 0) {
-                            item.Quality--;
+                            item.Quality -= KeyValues.AgedQualityReduction;
+                        }
+                        else {
+                            item.Quality -= KeyValues.QualityReduction;
                         }
                     }
 
