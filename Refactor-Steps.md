@@ -120,3 +120,7 @@ And now we have an extra nested `Sulfuras` if value which can be combined.
 Now that we're progressing, I'm finding the `Items[i].<value>` construct to be quite annoying.  I'm going to replace the `for` loop with a `foreach` loop, and just operate on an `item` individually.
 
 ---
+
+The IDE now highlights a number of changes, once we've removed the unnecessary index accessors, related to using the compound (`++` and `--`) operators.  We'll apply those as they also make the code easier to read.
+
+---
