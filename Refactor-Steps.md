@@ -224,3 +224,7 @@ Now we've got the Aged Brie, we can do the Backstage Pass.
 Now we can remove the old code.
 
 ---
+
+This now can be broken into functions
+
+---

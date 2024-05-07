@@ -57,41 +57,54 @@ namespace GildedRoseKata
                 case KeyValues.Sulfuras:
                     return;
                 case KeyValues.AgedBrie:
-                    if (item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality++;
-                    }
-                    item.SellIn--;
-                    if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality++;
-                    }
+                    HandleAgedBrie(item);
                     return;
                 case KeyValues.BackstagePass.Name:
-                    if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary &&
-                        item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality++;
-                    }
-                    else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
-                            item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary &&
-                            item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality += KeyValues.BackstagePass.FirstIncrease;
-                    }
-                    else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary &&
-                            item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality += KeyValues.BackstagePass.SecondIncrease;
-                    }
-
-                    item.Quality = int.Min(item.Quality, KeyValues.MaxQuality);
-                    item.SellIn--;
-                    if (item.SellIn < 0) {
-                        item.Quality = KeyValues.BackstagePass.OverageValue;
-                    }
+                    HandleBackstagePass(item);
                     return;
             }
+        }
+
+        private static void HandleBackstagePass(Item item)
+        {
+            if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary &&
+                                    item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality++;
+            }
+            else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
+                    item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary &&
+                    item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality += KeyValues.BackstagePass.FirstIncrease;
+            }
+            else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary &&
+                    item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality += KeyValues.BackstagePass.SecondIncrease;
+            }
+
+            item.Quality = int.Min(item.Quality, KeyValues.MaxQuality);
+            item.SellIn--;
+            if (item.SellIn < 0)
+            {
+                item.Quality = KeyValues.BackstagePass.OverageValue;
+            }
+            return;
+        }
+
+        private static void HandleAgedBrie(Item item)
+        {
+            if (item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality++;
+            }
+            item.SellIn--;
+            if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality)
+            {
+                item.Quality++;
+            }
+            return;
         }
 
         private static void HandleStandard(Item item)
