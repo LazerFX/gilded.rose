@@ -228,3 +228,27 @@ Now we can remove the old code.
 This now can be broken into functions
 
 ---
+
+### 3 - Post phase discussion
+
+The issue with the tests was unfortunate, but almost a fact of life when dealing with code - something is going to break.  Fortunately, because we were taking small, reasonable steps, had a decent test suite in place, and had organised the code in a logical way we could fix the issues that had snuck in pretty quickly without having to revert the git changes.  Many might note that I'm not testing the individual `HandleBackstagePass`, `HandleAgedBrie`, `HandleStandard` functions.  This is because these are implementation details of the function, not part of the contract (implicitly - give `GildedRose` a list of items and run `UpdateQuality` and it will process them for one day) of the function.  If you down the route of having that specific a detail, then deciding in the future to, say, inject handlers for each item externally, or use lambdas to process the data, or any other major refactor will cause your tests to break.  This is a major part of considering where to place your tests, and how to test.
+
+There are many more refactoring tasks we can do, depending on how far we want to take this process.  We can add lookup tables with functions that can be called in order to handle the quality changes, the date changes, and the post-phase clean up (For instance, clamping to a max 50/min 0 quality); sorting the lookup tables; standardising any other processes.  However, we're at a point where we can see the code, it's relatively clear what each function does, and each function has a moderately reasonable level of complexity and task, the code as a whole has an acceptable test suite and doesn't fall over if you push it.  Now we can actually look at *changing* the functionality.
+
+## 4 - Adding new functionality, and fixing obvious bugs
+
+We've currently refactored to not change existing processes as much as we can.  While this has resulted in quite a significant code refactor (That, honestly, is far from complete) we are now in a reasonable place to add a new suite of test cases, and moderate them in a reasonable way.
+
+There is an obvious bug that I can see straight off - the application apparently (from functions and details) expects to a take a runtime of how many days it should run.  However, this is promptly ignored and 30 days is always ran.  I would like to update that so that it actually runs on the days, but I'll do that after I've added the new functionality.
+
+From the description:
+> "Conjured" items degrade in `Quality` twice as fast as normal items
+As noted at the start of [Section 3](#3---consider-how-to-update-the-application-for-future-needs), I don't believe there's a logical way to add this to the existing special items (Sulfuras doesn't change, BackstagePass goes up then drops to zero, and Aged Brie goes up).  So this will apply to any item *starting with `Conjured` as a text string*.
+
+## 4 - In progress - each time we commit, we'll make a note here what has changed
+
+We've already got an infrastructure for handling a lot of the code, and a way of coding.  There are a lot of people who'll insist you don't add all the tests up-front, however this is something that is going to be a relatively 'chunk'-based changed.  Note that this also indicates that we're not complete with the refactoring - if we'd gotten it farther down the road, we could have added (say) a new type and put all the tests onto that and then dropped that into the DI container and had it auto-magically work.  Pragmatism is going to win the day here in order to actually get this code out of the door.
+
+Add basic, obvious tests.
+
+---

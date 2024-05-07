@@ -24,6 +24,8 @@ namespace GildedRoseKata
 
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         public const int MaxQuality = 50;
+
+        public const string ConjuredPrefix = "Conjured ";
     }
 
     public class GildedRose
@@ -99,7 +101,9 @@ namespace GildedRoseKata
             {
                 item.Quality++;
             }
+
             item.SellIn--;
+
             if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality)
             {
                 item.Quality++;
