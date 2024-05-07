@@ -260,3 +260,5 @@ Added code to handle the obvious test - note, this has broken the long-form test
 Fixed the long-form test
 
 ---
+
+Now we have updated the code to support the new conjured test with a very small input of time and change of code.  Of course, there's still lots of refactoring to do - but this is a great point to say that while the refactoring took a while, now any updates can be performed confidently, with assurance that there are going to be little issues if something goes wrong (And, also, that if something does go wrong it's recoverable).
