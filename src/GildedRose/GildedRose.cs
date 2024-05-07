@@ -33,24 +33,19 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                if (item.Name == KeyValues.Sulfuras) {
+                if (item.Name == KeyValues.Sulfuras)
+                {
                     break;
                 }
 
-                if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name)
+                if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
                 {
-                    if (item.Quality > 0)
-                    {
-                            item.Quality--;
-                    }
+                    item.Quality--;
                 }
 
-                if (item.Name == KeyValues.AgedBrie)
+                if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
                 {
-                    if (item.Quality < KeyValues.MaxQuality)
-                    {
-                        item.Quality++;
-                    }
+                    item.Quality++;
                 }
 
                 if (item.Name == KeyValues.BackstagePass.Name)
