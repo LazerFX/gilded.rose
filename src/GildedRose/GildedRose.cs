@@ -6,6 +6,7 @@ namespace GildedRoseKata
     {
         public const string AgedBrie = "Aged Brie";
         public const string BackstagePass = "Backstage passes to a TAFKAL80ETC concert";
+        public const int BackstagePassOverageValue = 0;
         public const string Sulfuras = "Sulfuras, Hand of Ragnaros";
         public const int MaxQuality = 50;
     }
@@ -74,7 +75,7 @@ namespace GildedRoseKata
 
                     if (Items[i].Name == KeyValues.BackstagePass)
                     {
-                        Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                        Items[i].Quality = KeyValues.BackstagePassOverageValue;
                     }
 
                     if (Items[i].Quality > 0)

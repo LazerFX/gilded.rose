@@ -22,7 +22,7 @@ namespace GildedRoseTests
         [InlineData(KeyValues.BackstagePass, 4, 10, 3, 13)]
         [InlineData(KeyValues.BackstagePass, 4, KeyValues.MaxQuality, 3, KeyValues.MaxQuality)]
         [InlineData(KeyValues.BackstagePass, 1, 10, 0, 13)]
-        [InlineData(KeyValues.BackstagePass, 0, 10, -1, 0)]
+        [InlineData(KeyValues.BackstagePass, 0, 10, -1, KeyValues.BackstagePassOverageValue)]
         [InlineData(KeyValues.Sulfuras, 10, 80, 10, 80)]
         [InlineData(KeyValues.Sulfuras, 10, 10, 10, 10)]
         [InlineData(KeyValues.Sulfuras, 20, 20, 20, 20)]
