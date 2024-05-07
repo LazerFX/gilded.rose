@@ -56,7 +56,14 @@ namespace GildedRoseKata
                 case KeyValues.Sulfuras:
                     return;
                 case KeyValues.AgedBrie:
-                    break;
+                    if (item.Quality < KeyValues.MaxQuality) {
+                        item.Quality ++;
+                    }
+                    item.SellIn--;
+                    if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality) {
+                        item.Quality ++;
+                    }
+                    return;
                 case KeyValues.BackstagePass.Name:
                     break;
             }
