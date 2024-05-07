@@ -140,3 +140,7 @@ Now we can handle the magic values for the `BackstagePass` a bit better.  We're 
 That looks like it has made things worse - those names are horrific.  Let's create a nested class for the BackstagePass values, and doe some cleaning up of the names.  Clearing up a few of the names to be more meaningful, a little shorter, and logically combined should help with readability in the future.
 
 ---
+
+We can cut out any reference to `Sulfuras` by simply returning early.  Many would argue that separate return points in a function are a negative, and I would usually agree, but here we're in the middle of refactoring - we need to split into functions later, so let's simplify the code as much as possible to facilitate that.  Remember - refactoring doesn't mean your code is perfect *as you do it*, merely that you're progressing in a way that will enable you to get better code later, in simple, non-destructive, testable steps - and sometimes that increases complexity or adds non-optimal sub-steps.
+
+---

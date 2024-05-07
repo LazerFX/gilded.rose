@@ -33,14 +33,15 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
+                if (item.Name == KeyValues.Sulfuras) {
+                    break;
+                }
+
                 if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name)
                 {
                     if (item.Quality > 0)
                     {
-                        if (item.Name != KeyValues.Sulfuras)
-                        {
                             item.Quality--;
-                        }
                     }
                 }
 
@@ -69,10 +70,7 @@ namespace GildedRoseKata
                     }
                 }
 
-                if (item.Name != KeyValues.Sulfuras)
-                {
-                    item.SellIn--;
-                }
+                item.SellIn--;
 
                 if (item.SellIn < 0)
                 {
@@ -86,7 +84,7 @@ namespace GildedRoseKata
                         item.Quality = KeyValues.BackstagePass.OverageValue;
                     }
 
-                    if (item.Quality > 0 && item.Name != KeyValues.Sulfuras)
+                    if (item.Quality > 0)
                     {
                         item.Quality--;
                     }
