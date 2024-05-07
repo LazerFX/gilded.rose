@@ -100,3 +100,7 @@ Adding a `MaxQuality` value to our `KeyItems` class, we can see the name perhaps
 Now we can start looking at simplifying some of the logic.  One of the easiest things you can do is invert an `if` statement.  An example is the `SellIn < 0` clause, where the `AgedBrie` value is wrapping everything else.  If we invert the if statement, we can put that clause into its own area, and reduce the nesting of the rest of the code.
 
 ---
+
+After doing this, we can see clearly now that there are two nested if statements with no associated code.  We can combine these if statements to reduce nesting.
+
+---

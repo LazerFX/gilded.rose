@@ -67,14 +67,11 @@ namespace GildedRoseKata
 
                 if (Items[i].SellIn < 0)
                 {
-                    if (Items[i].Name == KeyValues.AgedBrie)
+                    if (Items[i].Name == KeyValues.AgedBrie && Items[i].Quality < KeyValues.MaxQuality)
                     {
-                        if (Items[i].Quality < KeyValues.MaxQuality)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
+                        Items[i].Quality = Items[i].Quality + 1;
                     }
-                    
+
                     if (Items[i].Name != KeyValues.BackstagePass)
                     {
                         if (Items[i].Quality > 0)
@@ -89,7 +86,7 @@ namespace GildedRoseKata
                     {
                         Items[i].Quality = Items[i].Quality - Items[i].Quality;
                     }
-                
+
                 }
             }
         }
