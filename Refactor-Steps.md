@@ -220,3 +220,7 @@ We've got the switch statement up, and after each one we've finished, we're goin
 Now we've got the Aged Brie, we can do the Backstage Pass.
 
 ---
+
+Now we can remove the old code.
+
+---

@@ -92,58 +92,6 @@ namespace GildedRoseKata
                     }
                     return;
             }
-
-            if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
-            {
-                item.Quality--;
-            }
-
-            if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
-            {
-                item.Quality++;
-            }
-
-            if (item.Name == KeyValues.BackstagePass.Name)
-            {
-                if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary &&
-                    item.Quality < KeyValues.MaxQuality)
-                {
-                    item.Quality++;
-                }
-                else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
-                        item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary &&
-                        item.Quality < KeyValues.MaxQuality)
-                {
-                    item.Quality += KeyValues.BackstagePass.FirstIncrease;
-                }
-                else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary &&
-                        item.Quality < KeyValues.MaxQuality)
-                {
-                    item.Quality += KeyValues.BackstagePass.SecondIncrease;
-                }
-
-                item.Quality = int.Min(item.Quality, KeyValues.MaxQuality);
-            }
-
-            item.SellIn--;
-
-            if (item.SellIn < 0)
-            {
-                if (item.Name == KeyValues.AgedBrie && item.Quality < KeyValues.MaxQuality)
-                {
-                    item.Quality++;
-                }
-
-                else if (item.Name == KeyValues.BackstagePass.Name)
-                {
-                    item.Quality = KeyValues.BackstagePass.OverageValue;
-                }
-
-                else if (item.Name != KeyValues.AgedBrie && item.Quality > 0)
-                {
-                    item.Quality--;
-                }
-            }
         }
 
         private static void HandleStandard(Item item)
