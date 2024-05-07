@@ -128,3 +128,7 @@ The IDE now highlights a number of changes, once we've removed the unnecessary i
 Now we can start simplifying the addition loop.  One thing to note is we have an `if not... else if / else if` combination.  So if we're not `AgedBrie` or `BackstagePass` we do something, otherwise we do something else, and if we're `AgedBrie` we continue.  This can be separated out into its own set of conditionals, inverting the if/else statement.
 
 ---
+
+Now we can see that we have two conditions - one for AgedBrie and one for BackstagePass.  Let's separate those out.
+
+---

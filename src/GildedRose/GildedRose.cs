@@ -35,29 +35,31 @@ namespace GildedRoseKata
                     }
                 }
 
-                if (item.Name == KeyValues.AgedBrie || item.Name == KeyValues.BackstagePass)
+                if (item.Name == KeyValues.AgedBrie)
                 {
                     if (item.Quality < KeyValues.MaxQuality)
                     {
                         item.Quality++;
+                    }
+                }
 
-                        if (item.Name == KeyValues.BackstagePass)
+                if (item.Name == KeyValues.BackstagePass)
+                {
+                    item.Quality++;
+                    
+                    if (item.SellIn < 11)
+                    {
+                        if (item.Quality < KeyValues.MaxQuality)
                         {
-                            if (item.SellIn < 11)
-                            {
-                                if (item.Quality < KeyValues.MaxQuality)
-                                {
-                                    item.Quality++;
-                                }
-                            }
+                            item.Quality++;
+                        }
+                    }
 
-                            if (item.SellIn < 6)
-                            {
-                                if (item.Quality < KeyValues.MaxQuality)
-                                {
-                                    item.Quality++;
-                                }
-                            }
+                    if (item.SellIn < 6)
+                    {
+                        if (item.Quality < KeyValues.MaxQuality)
+                        {
+                            item.Quality++;
                         }
                     }
                 }
