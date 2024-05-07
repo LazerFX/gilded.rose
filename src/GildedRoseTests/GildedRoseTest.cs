@@ -12,6 +12,7 @@ namespace GildedRoseTests
         [InlineData("stuff", 1, 10, 0, 9)]
         [InlineData("stuff", 2, 10, 1, 9)]
         [InlineData("stuff", 0, 10, -1, 8)]
+        [InlineData("stuff", -1, 1, -2, 0)]
         [InlineData("stuff", -1, 0, -2, 0)]
         [InlineData("stuff", -1, -1, -2, 0)]
         [InlineData(KeyValues.AgedBrie, 5, 10, 4, 11)]
