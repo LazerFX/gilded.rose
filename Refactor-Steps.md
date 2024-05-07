@@ -178,3 +178,9 @@ So it looks like the commit `Separated IF statements for Brie` was the first poi
 The first bug found is that the `HandleKey` function doesn't have a SellIn reduction step.
 
 ---
+
+In order to facilitate reading the errors, I'm going to refactor the test.  I'm adding FluentAssertions, and creating an 'expected item' I can compare against.  FluentAssertions will display a nicer formatted object for the error which should be more comparable.
+
+Fixed SellIn location bug
+
+---

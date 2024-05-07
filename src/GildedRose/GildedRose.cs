@@ -57,8 +57,6 @@ namespace GildedRoseKata
                 return;
             }
 
-            item.SellIn--;
-
             if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
             {
                 item.Quality--;
@@ -85,6 +83,8 @@ namespace GildedRoseKata
                     item.Quality += KeyValues.BackstagePass.SecondIncrease;
                 }
             }
+
+            item.SellIn--;
 
             if (item.SellIn < 0)
             {

@@ -1,6 +1,8 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using GildedRoseKata;
+using FluentAssertions;
+using System;
 
 namespace GildedRoseTests
 {
@@ -32,9 +34,14 @@ namespace GildedRoseTests
         {
             IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
             GildedRose app = new GildedRose(Items);
+
             app.UpdateQuality();
-            Assert.Equal(expectedSellIn, Items[0].SellIn);
-            Assert.Equal(expectedQuality, Items[0].Quality);
+
+            var expectedItem = new Item { Name = name, SellIn = expectedSellIn, Quality = expectedQuality };
+            var actualItem = Items[0];
+            actualItem.Should().BeEquivalentTo(expectedItem, $"{Environment.NewLine
+                                        }Actual:   {actualItem.Name} - SI: {actualItem.SellIn}, Q: {actualItem.Quality}{Environment.NewLine
+                                        }Expected: {expectedItem.Name} - SI: {expectedItem.SellIn}, Q: {expectedItem.Quality}");
         }
     }
 }
