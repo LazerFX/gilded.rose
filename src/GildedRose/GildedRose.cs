@@ -72,19 +72,17 @@ namespace GildedRoseKata
                         Items[i].Quality = Items[i].Quality + 1;
                     }
 
-                    if (Items[i].Name != KeyValues.BackstagePass)
-                    {
-                        if (Items[i].Quality > 0)
-                        {
-                            if (Items[i].Name != KeyValues.Sulfuras)
-                            {
-                                Items[i].Quality = Items[i].Quality - 1;
-                            }
-                        }
-                    }
-                    else
+                    if (Items[i].Name == KeyValues.BackstagePass)
                     {
                         Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                    }
+
+                    if (Items[i].Quality > 0)
+                    {
+                        if (Items[i].Name != KeyValues.Sulfuras)
+                        {
+                            Items[i].Quality = Items[i].Quality - 1;
+                        }
                     }
 
                 }

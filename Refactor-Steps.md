@@ -104,3 +104,7 @@ Now we can start looking at simplifying some of the logic.  One of the easiest t
 After doing this, we can see clearly now that there are two nested if statements with no associated code.  We can combine these if statements to reduce nesting.
 
 ---
+
+We can now continue this with the `BackstagePass` value.
+
+---
