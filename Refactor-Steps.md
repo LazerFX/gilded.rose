@@ -184,3 +184,7 @@ In order to facilitate reading the errors, I'm going to refactor the test.  I'm 
 Fixed SellIn location bug
 
 ---
+
+Fixed `MaxQuality` naïve approach, however this has demonstrated there are more tests needed for where we're adding more than 1 (for instance in the backstage pass) and it's going past Max Value.  That's next.
+
+---
