@@ -57,6 +57,8 @@ namespace GildedRoseKata
                 return;
             }
 
+            item.SellIn--;
+
             if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
             {
                 item.Quality--;

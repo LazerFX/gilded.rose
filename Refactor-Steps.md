@@ -173,3 +173,8 @@ At this point, I ran the tests manually from the command line, to confirm that e
 
 ---
 
+So it looks like the commit `Separated IF statements for Brie` was the first point of failure.  It looks like the IDE test display, and the XUnit runner, is getting confused by the very similar signatures of the test, and is unreliable in actually running the test, and reporting success/failure back to the IDE.  This is quite an issue, as it means I'll be using `dotnet test` for a while.  It also means that I need to go through and refactor some of the refactoring, which should be easier now that we're in a clearer state, but this is quite an unfortunate position to be in - but surprisingly common.  Always check your work in multiple ways, don't assume that just because it's telling you it's working it actually is.
+
+The first bug found is that the `HandleKey` function doesn't have a SellIn reduction step.
+
+---
