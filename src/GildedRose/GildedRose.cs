@@ -52,20 +52,45 @@ namespace GildedRoseKata
 
         private static void HandleKey(Item item)
         {
-            switch (item.Name) {
+            switch (item.Name)
+            {
                 case KeyValues.Sulfuras:
                     return;
                 case KeyValues.AgedBrie:
-                    if (item.Quality < KeyValues.MaxQuality) {
-                        item.Quality ++;
+                    if (item.Quality < KeyValues.MaxQuality)
+                    {
+                        item.Quality++;
                     }
                     item.SellIn--;
-                    if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality) {
-                        item.Quality ++;
+                    if (item.SellIn < 0 && item.Quality < KeyValues.MaxQuality)
+                    {
+                        item.Quality++;
                     }
                     return;
                 case KeyValues.BackstagePass.Name:
-                    break;
+                    if (item.SellIn > KeyValues.BackstagePass.FirstSellInBoundary &&
+                        item.Quality < KeyValues.MaxQuality)
+                    {
+                        item.Quality++;
+                    }
+                    else if (item.SellIn <= KeyValues.BackstagePass.FirstSellInBoundary &&
+                            item.SellIn > KeyValues.BackstagePass.SecondSellInBoundary &&
+                            item.Quality < KeyValues.MaxQuality)
+                    {
+                        item.Quality += KeyValues.BackstagePass.FirstIncrease;
+                    }
+                    else if (item.SellIn <= KeyValues.BackstagePass.SecondSellInBoundary &&
+                            item.Quality < KeyValues.MaxQuality)
+                    {
+                        item.Quality += KeyValues.BackstagePass.SecondIncrease;
+                    }
+
+                    item.Quality = int.Min(item.Quality, KeyValues.MaxQuality);
+                    item.SellIn--;
+                    if (item.SellIn < 0) {
+                        item.Quality = KeyValues.BackstagePass.OverageValue;
+                    }
+                    return;
             }
 
             if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
@@ -129,7 +154,7 @@ namespace GildedRoseKata
             {
                 item.Quality -= KeyValues.AgedQualityReduction;
             }
-            else 
+            else
             {
                 item.Quality = int.Max(item.Quality - KeyValues.QualityReduction, 0);
             }

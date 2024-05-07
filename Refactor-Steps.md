@@ -216,3 +216,7 @@ Now all tests are passing, we can start to figure out what to do next.  As above
 We've got the switch statement up, and after each one we've finished, we're going to set it to return.  This should allow us to transfer the control code to the switch without having to worry about the code remaining in the function; eventually we can just remove it altogether.  This could be likened to a `strangler pattern` approach, where you bypass existing code to run new code, until the existing code is 'strangled' (like the infamous Strangler Fig the pattern takes its name from).  The first step is the Aged Brie values.
 
 ---
+
+Now we've got the Aged Brie, we can do the Backstage Pass.
+
+---
