@@ -41,7 +41,11 @@ namespace GildedRoseKata
         {
             foreach (var item in Items)
             {
-                if (KeyValues.KeyItems.Contains(item.Name))
+                if (item.Name is null) {
+                    continue;
+                }
+
+                if (KeyValues.KeyItems.Contains(item.Name) || item.Name.StartsWith(KeyValues.ConjuredPrefix))
                 {
                     HandleKey(item);
                 }
@@ -64,7 +68,25 @@ namespace GildedRoseKata
                 case KeyValues.BackstagePass.Name:
                     HandleBackstagePass(item);
                     return;
+                case { } when item.Name.StartsWith(KeyValues.ConjuredPrefix):
+                    HandleConjuredPrefix(item);
+                    return;
             }
+        }
+
+        private static void HandleConjuredPrefix(Item item) {
+            item.SellIn--;
+
+            if (item.SellIn < 0 && item.Quality > 0)
+            {
+                item.Quality -= KeyValues.AgedQualityReduction * 2;
+            }
+            else
+            {
+                item.Quality = int.Max(item.Quality - KeyValues.QualityReduction * 2, 0);
+            }
+
+            item.Quality = int.Max(item.Quality, 0);
         }
 
         private static void HandleBackstagePass(Item item)
