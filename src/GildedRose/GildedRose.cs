@@ -52,9 +52,13 @@ namespace GildedRoseKata
 
         private static void HandleKey(Item item)
         {
-            if (item.Name == KeyValues.Sulfuras)
-            {
-                return;
+            switch (item.Name) {
+                case KeyValues.Sulfuras:
+                    return;
+                case KeyValues.AgedBrie:
+                    break;
+                case KeyValues.BackstagePass.Name:
+                    break;
             }
 
             if (item.Name != KeyValues.AgedBrie && item.Name != KeyValues.BackstagePass.Name && item.Quality > 0)
