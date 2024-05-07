@@ -196,3 +196,8 @@ Added more tests to identify issues with the clamping.  Fixed the issues while d
 Fixed a faulty test
 
 ---
+
+Fixed the Aged Brie reduction
+
+---
+

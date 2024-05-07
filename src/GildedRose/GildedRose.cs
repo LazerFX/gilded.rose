@@ -103,7 +103,7 @@ namespace GildedRoseKata
                     item.Quality = KeyValues.BackstagePass.OverageValue;
                 }
 
-                else if (item.Quality > 0)
+                else if (item.Name != KeyValues.AgedBrie && item.Quality > 0)
                 {
                     item.Quality--;
                 }
