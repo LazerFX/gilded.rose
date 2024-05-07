@@ -23,6 +23,11 @@ namespace GildedRoseTests
         [InlineData(KeyItem.BackstagePass, 4, 50, 3, 50)]
         [InlineData(KeyItem.BackstagePass, 1, 10, 0, 13)]
         [InlineData(KeyItem.BackstagePass, 0, 10, -1, 0)]
+        [InlineData(KeyItem.Sulfuras, 10, 80, 10, 80)]
+        [InlineData(KeyItem.Sulfuras, 10, 10, 10, 10)]
+        [InlineData(KeyItem.Sulfuras, 20, 20, 20, 20)]
+        [InlineData(KeyItem.Sulfuras, 0, 20, 0, 20)]
+        [InlineData(KeyItem.Sulfuras, -1, 80, -1, 80)]
         public void foo(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             IList<Item> Items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
